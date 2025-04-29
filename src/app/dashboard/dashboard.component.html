@@ -1,51 +1,58 @@
 <div class="p-6">
-    <h2 class="text-2xl font-bold mb-4">Employee Dashboard</h2>
+ 
+  <div class="mb-4 flex items-center space-x-2">
+    <input class="border p-2 rounded w-60" type="number" placeholder="Search by ID" [(ngModel)]="searchId">
+    <button class="bg-blue-600 text-white px-4 py-2 rounded" (click)="searchEmployeeById()">Search</button>
+    <button class="bg-gray-400 text-white px-4 py-2 rounded" (click)="loadEmployees()">Reset</button>
+  </div>
+
   
-    <table class="w-full table-auto border border-gray-300 rounded shadow">
-      <thead>
-        <tr class="bg-gray-100">
-          <th class="px-4 py-2 text-left">ID</th>
-          <th class="px-4 py-2 text-left">Name</th>
-          <th class="px-4 py-2 text-left">Email</th>
-          <th class="px-4 py-2 text-left">Department</th>
-          <th class="px-4 py-2 text-left">Created At</th>
-          <th class="px-4 py-2 text-left">Updated At</th>
-          <th class="px-4 py-2 text-left">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let emp of employees" class="border-t">
-          <td class="px-4 py-2">{{ emp.id }}</td>
-          <td class="px-4 py-2">{{ emp.name }}</td>
-          <td class="px-4 py-2">{{ emp.email }}</td>
-          <td class="px-4 py-2">{{ emp.department }}</td>
-          <td class="px-4 py-2">{{ emp.createdTime }}</td>
-          <td class="px-4 py-2">{{ emp.createdTime }}</td>
-          <td class="px-4 py-2 space-x-2">
-            <button class="text-blue-600 hover:underline" (click)="editEmployee(emp)">Edit</button>
-            <button class="text-red-600 hover:underline" (click)="deleteEmployee(emp.id)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <!-- Edit UI -->
-    <div *ngIf="editingEmployee" class="mt-6 border p-4 rounded bg-gray-50 shadow">
-      <h3 class="text-lg font-semibold mb-2">Edit Employee</h3>
-      <div class="space-y-3">
-        <input class="border p-2 w-full" type="text" [(ngModel)]="editingEmployee.name" placeholder="Name" />
-        <input class="border p-2 w-full" type="email" [(ngModel)]="editingEmployee.email" placeholder="Email" />
-        <select class="border p-2 w-full" [(ngModel)]="editingEmployee.department">
-          <option value="HR">HR</option>
-          <option value="IT">IT</option>
-          <option value="FINANCE">FINANCE</option>
-          <option value="OPERATIONS">OPERATIONS</option>
-        </select>
-      </div>
-      <div class="mt-4 space-x-2">
-        <button class="bg-blue-600 text-white px-4 py-2 rounded" (click)="updateEmployee()">Save</button>
-        <button class="bg-gray-400 text-white px-4 py-2 rounded" (click)="cancelEdit()">Cancel</button>
-      </div>
+  <h2 class="text-2xl font-bold mb-4">Employee Dashboard</h2>
+
+  <table class="w-full table-auto border border-gray-300 rounded shadow">
+    <thead>
+      <tr class="bg-gray-100">
+        <th class="px-4 py-2 text-left">ID</th>
+        <th class="px-4 py-2 text-left">Name</th>
+        <th class="px-4 py-2 text-left">Email</th>
+        <th class="px-4 py-2 text-left">Department</th>
+        <th class="px-4 py-2 text-left">Created At</th>
+        <th class="px-4 py-2 text-left">Updated At</th>
+        <th class="px-4 py-2 text-left">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of employees" class="border-t">
+        <td class="px-4 py-2">{{ emp.id }}</td>
+        <td class="px-4 py-2">{{ emp.name }}</td>
+        <td class="px-4 py-2">{{ emp.email }}</td>
+        <td class="px-4 py-2">{{ emp.department }}</td>
+        <td class="px-4 py-2">{{ emp.createdTime }}</td>
+        <td class="px-4 py-2">{{ emp.createdTime }}</td>
+        <td class="px-4 py-2 space-x-2">
+          <button class="text-blue-600 hover:underline" (click)="editEmployee(emp)">Edit</button>
+          <button class="text-red-600 hover:underline" (click)="deleteEmployee(emp.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ✏️ Edit Form -->
+  <div *ngIf="editingEmployee" class="mt-6 border p-4 rounded bg-gray-50 shadow">
+    <h3 class="text-lg font-semibold mb-2">Edit Employee</h3>
+    <div class="space-y-3">
+      <input class="border p-2 w-full" type="text" [(ngModel)]="editingEmployee.name" placeholder="Name" />
+      <input class="border p-2 w-full" type="email" [(ngModel)]="editingEmployee.email" placeholder="Email" />
+      <select class="border p-2 w-full" [(ngModel)]="editingEmployee.department">
+        <option value="HR">HR</option>
+        <option value="IT">IT</option>
+        <option value="FINANCE">FINANCE</option>
+        <option value="OPERATIONS">OPERATIONS</option>
+      </select>
+    </div>
+    <div class="mt-4 space-x-2">
+      <button class="bg-blue-600 text-white px-4 py-2 rounded" (click)="updateEmployee()">Save</button>
+      <button class="bg-gray-400 text-white px-4 py-2 rounded" (click)="cancelEdit()">Cancel</button>
     </div>
   </div>
-  
+</div>

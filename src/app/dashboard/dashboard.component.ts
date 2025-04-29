@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 export class DashboardComponent implements OnInit{
   employees: Employee[] = [];
   editingEmployee: Employee | null = null;
+  searchId: number | null = null;
 
   constructor(private employeeService: EmployeeService) {}
 
@@ -61,6 +62,20 @@ export class DashboardComponent implements OnInit{
     });
   }
 
+
+  searchEmployeeById(): void {
+    if (this.searchId === null) return;
+  
+    this.employeeService.getEmployeeById(this.searchId).subscribe({
+      next: (employee) => {
+        this.employees = [employee]; 
+      },
+      error: (err) => {
+        console.error('Employee not found', err);
+        this.employees = []; 
+      }
+    });
+  }
   cancelEdit() {
     this.editingEmployee = null;
   }

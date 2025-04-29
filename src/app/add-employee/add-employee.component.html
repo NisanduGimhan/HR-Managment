@@ -2,7 +2,6 @@
     <div class="max-w-3xl mx-auto bg-white shadow-md rounded-xl p-8">
       <div class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-800">Add New Employee</h1>
-        <button class="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600">Back to Employees</button>
       </div>
   
       <form (ngSubmit)="createEmployee()" #employeeForm="ngForm">
@@ -30,7 +29,7 @@
         <div class="flex justify-end gap-4">
           <button type="button" class="px-4 py-2 rounded bg-gray-100 text-gray-700 hover:bg-gray-200">Cancel</button>
           <button type="submit" [disabled]="!employeeForm.form.valid"
-                  class="px-6 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">Create Employee</button>
+                  class="px-6 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">Add Employee</button>
         </div>
       </form>
     </div>

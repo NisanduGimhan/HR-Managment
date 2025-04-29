@@ -13,7 +13,7 @@ export class EmployeeService {
 
   getAllEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(`${this.baseUrl}/get-all`);
-    
+
   }
 
   updateEmployee(id: number, employee: Employee): Observable<Employee> {
@@ -24,5 +24,8 @@ export class EmployeeService {
     return this.http.delete<void>(`${this.baseUrl}/delete/${id}`);
   }
 
+  addEmployee(employee: any): Observable<Employee> {
+    return this.http.post<Employee>(`${this.baseUrl}/add`, employee);
+  }
   
 }

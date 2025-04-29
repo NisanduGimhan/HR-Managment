@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AddEmployeeComponent } from "./add-employee/add-employee.component";
@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, DashboardComponent, AddEmployeeComponent,FormsModule ,CommonModule],
+  imports: [RouterOutlet, HeaderComponent, DashboardComponent, AddEmployeeComponent,FormsModule ,CommonModule,RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -17,3 +17,4 @@ export class AppComponent {
 
   
 }
+
